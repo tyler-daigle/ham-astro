@@ -1,4 +1,5 @@
 ---
+const words = ["this", "that","here","where"];
 ---
 
 <html lang="en">
@@ -11,5 +12,8 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+		<ul>
+			{words.map(word => <li>{word}</li>)}
+		</ul>
 	</body>
 </html>
