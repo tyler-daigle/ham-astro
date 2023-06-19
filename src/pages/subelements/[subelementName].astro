@@ -1,0 +1,41 @@
+---
+import jsonData from "../../data/tech-subelements.json";
+
+export function getStaticPaths() {
+    /*
+    [
+        {params: {subelementName:'', groups: []}}
+    ]
+    */
+    return jsonData.map((data) => ({
+        params: { subelementName: data.subelementId },
+    }));
+}
+
+const { subelementName } = Astro.params;
+const groups =
+    jsonData.find((data) => data.subelementId === subelementName)?.groups || [];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>Groups in subelement {subelementName}:</h1>
+        <ul>
+            {
+                groups.map((group) => (
+                    <li>
+                        <a href={`/groups/${group}`}>{group}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </body>
+</html>

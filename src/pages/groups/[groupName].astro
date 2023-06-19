@@ -1,18 +1,27 @@
 ---
 import groupJson from "../../data/tech-groups.json";
+import questionJson from "../../data/tech-questions.json";
 
 export function getStaticPaths() {
-  /*
+	/*
     [
       {params: {groupName: group} }
     ]
   */
- const paths = groupJson.map(groupData => ({params: {groupName: groupData.groupId}}));
- return paths;
+	const paths = groupJson.map((groupData) => ({
+		params: { groupName: groupData.groupId },
+	}));
+	return paths;
 }
 
-const {groupName} = Astro.params;
-const desc = groupJson.find((data)=> data.groupId === groupName)?.description || "No description";
+const { groupName } = Astro.params;
+const desc =
+	groupJson.find((data) => data.groupId === groupName)?.description ||
+	"No description";
+
+const questions = questionJson.filter(
+	(question) => question.group === groupName
+);
 ---
 
 <html lang="en">
@@ -25,8 +34,13 @@ const desc = groupJson.find((data)=> data.groupId === groupName)?.description ||
 	</head>
 	<body>
 		<h1>Group {groupName}</h1>
-    <p>
-      {desc}
-    </p>
+		<p class="text-gray-600">
+			{desc}
+		</p>
+
+		<h2>{questions.length} Questions in Group {groupName}:</h2>
+		<ul>
+			{questions.map((q) => <li>{q.text}</li>)}
+		</ul>
 	</body>
 </html>
