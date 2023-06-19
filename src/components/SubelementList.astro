@@ -11,7 +11,9 @@ const { subelements, examType } = Astro.props;
                     <SectionHeader>
                         Subelement {subelement.subelementName}
                     </SectionHeader>
-                    <p class="py-4">{subelement.description}</p>
+                    <p class="py-4 capitalize text-lg">
+                        {subelement.description.toLowerCase()}
+                    </p>
 
                     <a
                         href={`/${examType}/subelements/${subelement.subelementName}`}

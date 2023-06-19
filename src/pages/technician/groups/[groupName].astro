@@ -1,13 +1,13 @@
 ---
 import groupJson from "@data/tech-groups.json";
 import questionJson from "@data/tech-questions.json";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import QuestionList from "@components/QuestionList.astro";
 
 export function getStaticPaths() {
-	/*
-    [
-      {params: {groupName: group} }
-    ]
-  */
 	const paths = groupJson.map((groupData) => ({
 		params: { groupName: groupData.groupId },
 	}));
@@ -24,23 +24,23 @@ const questions = questionJson.filter(
 );
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Group {groupName}</h1>
-		<p class="text-gray-600">
+<BaseLayout pageTitle={`Group ${groupName}`}>
+	<MainLayout>
+		<PageHeader>Questions in Group {groupName}</PageHeader>
+		<p class="py-4">
 			{desc}
 		</p>
 
-		<h2>{questions.length} Questions in Group {groupName}:</h2>
-		<ul>
-			{questions.map((q) => <li>{q.text}</li>)}
-		</ul>
-	</body>
-</html>
+		<SectionHeader>
+			{questions.length} Questions in Group {groupName}:
+		</SectionHeader>
+
+		<p class="py-4 font-semibold">
+			The correct answers are highlighted in <span class="text-blue-500"
+				>blue</span
+			>.
+		</p>
+
+		<QuestionList questionList={questions} />
+	</MainLayout>
+</BaseLayout>

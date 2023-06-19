@@ -1,6 +1,8 @@
 ---
 const { pageTitle } = Astro.props;
 import "../styles/base.css";
+
+import Navbar from "@components/Navbar.astro";
 ---
 
 <html lang="en">
@@ -17,6 +19,7 @@ import "../styles/base.css";
         <title>{pageTitle || "HAM Exam Question Pool Browser"}</title>
     </head>
     <body class="bg-slate-100 text-gray-800">
+        <Navbar />
         <main>
             <slot />
         </main>

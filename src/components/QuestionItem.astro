@@ -1,0 +1,25 @@
+---
+const { questionId, questionText, questionChoices, correctAnswer } =
+    Astro.props;
+---
+
+<section>
+    <div>
+        <p class="mb-2 text-xl">{questionText}</p>
+        <ol class="list-letters ml-7">
+            {
+                questionChoices.map((choice, index) => (
+                    <li
+                        class={
+                            correctAnswer === index
+                                ? "text-blue-500 font-bold"
+                                : ""
+                        }
+                    >
+                        {choice}
+                    </li>
+                ))
+            }
+        </ol>
+    </div>
+</section>

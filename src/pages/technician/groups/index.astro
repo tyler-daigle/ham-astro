@@ -1,36 +1,36 @@
 ---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+
 import groupJson from "@data/tech-groups.json";
 const examName = "technician";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Groups</title>
-  </head>
-  <body>
-    <h1 class="my-2 text-2xl">Groups</h1>
+<BaseLayout pageTitle={`Groups in the ${examName} exam`}>
+  <MainLayout>
+    <PageHeader>{`All Groups In The ${examName} Exam`}</PageHeader>
+    <p class="py-4">
+      The {examName} exam is divided into {groupJson.length} groups of questions.
+      Each group contains questions that are related to each other. You can view
+      the questions in each group by clicking on the links below.
+    </p>
     <ul>
       {
         groupJson.map((groupData) => {
           return (
-            <li class="border-2 p-2 my-2 rounded-md">
-              <a
-                class="text-sky-500 text-lg hover:text-sky-800"
-                href={`/${examName}/groups/${groupData.groupId}`}
-              >
-                {groupData.groupId}
+            <li class="border-2 p-4 my-4">
+              <SectionHeader>Group {groupData.groupId}</SectionHeader>
+              <p class="py-4">{groupData.description}</p>
+              <a href={`/${examName}/groups/${groupData.groupId}`}>
+                View questions in group {groupData.groupId}
               </a>
-              <p class="text-gray-600">{groupData.description}</p>
             </li>
           );
         })
       }
       <li></li>
     </ul>
-  </body>
-</html>
+  </MainLayout>
+</BaseLayout>

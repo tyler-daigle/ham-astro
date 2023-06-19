@@ -1,29 +1,33 @@
 ---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+
 import questionData from "@data/tech-questions.json";
 const examType = "technician";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
-    </head>
-    <body>
-        <h1>{examType} Questions</h1>
-        <p>There are {questionData.length} questions in the {examType} question pool.</p>
+<BaseLayout>
+    <MainLayout pageTitle={`All Questions For The ${examType} exam`}>
+        <PageHeader>{examType} Questions</PageHeader>
+        <p class="py-4">
+            There are {questionData.length} questions in the {examType} question
+            pool.
         </p>
         <ul>
-            {questionData.map((question) => (
-                <li>
-                    <a href=`/${examType}/questions/${question.id}`>
-                        {question.id}
-                    </a>
-                </li>
-            ))}
+            {
+                questionData.map((question) => {
+                    return (
+                        <li class="border p-4 my-4">
+                            <a href={`/${examType}/questions/${question.id}`}>
+                                {question.id}
+                            </a>
+                            <p class="py-4">{question.text}</p>
+                        </li>
+                    );
+                })
+            }
         </ul>
-        
-    </body>
-</html>
+    </MainLayout>
+</BaseLayout>

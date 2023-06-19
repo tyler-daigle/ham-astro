@@ -1,0 +1,20 @@
+---
+import QuestionItem from "@components/QuestionItem.astro";
+const { questionList } = Astro.props;
+---
+
+<ol>
+    {
+        questionList.map((q) => (
+            <li class="flex gap-4 p-4 mb-4 border">
+                <span class="font-bold text-xl">{q.id}</span>
+                <QuestionItem
+                    questionId={q.id}
+                    questionText={q.text}
+                    questionChoices={q.choices}
+                    correctAnswer={q.answer}
+                />
+            </li>
+        ))
+    }
+</ol>
