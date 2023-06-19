@@ -1,0 +1,29 @@
+---
+import questionData from "@data/tech-questions.json";
+const examType = "technician";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>{examType} Questions</h1>
+        <p>There are {questionData.length} questions in the {examType} question pool.</p>
+        </p>
+        <ul>
+            {questionData.map((question) => (
+                <li>
+                    <a href=`/${examType}/questions/${question.id}`>
+                        {question.id}
+                    </a>
+                </li>
+            ))}
+        </ul>
+        
+    </body>
+</html>

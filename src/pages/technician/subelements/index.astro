@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SubelementList from "@components/SubelementList.astro";
+import subelementJson from "@data/tech-subelements.json";
+
+const subelements = subelementJson.map((data) => ({
+    subelementName: data.subelementId,
+    description: data.name,
+}));
+
+const examName = "technician";
+---
+
+<BaseLayout pageTitle={`${examName} subelements`}>
+    <MainLayout>
+        <PageHeader>
+            <span class="capitalize">{examName}</span> Subelements
+        </PageHeader>
+        <SubelementList examType={examName} subelements={subelements} />
+    </MainLayout>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import questionData from "@data/tech-questions.json";
+
+export function getStaticPaths() {
+    return questionData.map((question) => ({
+        params: { questionId: question.id },
+    }));
+}
+
+const { questionId } = Astro.params;
+const question = questionData.find((data) => data.id === questionId);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>Question {questionId}</h1>
+        <p>{question.text}</p>
+    </body>
+</html>

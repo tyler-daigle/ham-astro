@@ -1,0 +1,25 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+const { subelements, examType } = Astro.props;
+---
+
+<ul>
+    {
+        subelements.map((subelement) => {
+            return (
+                <li class="border-2 p-4 my-4">
+                    <SectionHeader>
+                        Subelement {subelement.subelementName}
+                    </SectionHeader>
+                    <p class="py-4">{subelement.description}</p>
+
+                    <a
+                        href={`/${examType}/subelements/${subelement.subelementName}`}
+                    >
+                        View Groups In Subelement
+                    </a>
+                </li>
+            );
+        })
+    }
+</ul>

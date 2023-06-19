@@ -1,19 +1,46 @@
 ---
-const words = ["this", "that","here","where"];
+import MainLayout from "@layouts/MainLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import SectionLinks from "@components/SectionLinks.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
+<BaseLayout pageTitle="This is the index">
+	<MainLayout>
+		<PageHeader>HAM Radio License Exam Question Pool Browser</PageHeader>
+		<p class="my-4">
+			Here you can browse through all the questions in the question pools
+			for each of the different license classes.
+		</p>
 		<ul>
-			{words.map(word => <li>{word}</li>)}
+			<li class="border-2 p-4 my-4">
+				<SectionHeader>Technician Exam</SectionHeader>
+				<p class="text-sm my-4">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+					Incidunt inventore molestiae optio consequatur non
+					blanditiis ab ut debitis cumque esse?
+				</p>
+				<SectionLinks examName="technician" />
+			</li>
+			<li class="border-2 p-4 my-4">
+				<SectionHeader>General Exam</SectionHeader>
+				<p class="text-sm my-4">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+					Incidunt inventore molestiae optio consequatur non
+					blanditiis ab ut debitis cumque esse?
+				</p>
+				<SectionLinks examName="general" />
+			</li>
+			<li class="border-2 p-4 my-4">
+				<SectionHeader>Amateur Extra Exam</SectionHeader>
+				<p class="text-sm my-4">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+					Incidunt inventore molestiae optio consequatur non
+					blanditiis ab ut debitis cumque esse?
+				</p>
+				<SectionLinks examName="extra" />
+			</li>
 		</ul>
-	</body>
-</html>
+	</MainLayout>
+</BaseLayout>

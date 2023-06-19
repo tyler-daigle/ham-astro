@@ -1,0 +1,24 @@
+---
+const { pageTitle } = Astro.props;
+import "../styles/base.css";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{pageTitle || "HAM Exam Question Pool Browser"}</title>
+    </head>
+    <body class="bg-slate-100 text-gray-800">
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>

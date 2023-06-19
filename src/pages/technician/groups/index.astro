@@ -1,5 +1,6 @@
 ---
-import groupJson from "../../data/tech-groups.json";
+import groupJson from "@data/tech-groups.json";
+const examName = "technician";
 ---
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ import groupJson from "../../data/tech-groups.json";
             <li class="border-2 p-2 my-2 rounded-md">
               <a
                 class="text-sky-500 text-lg hover:text-sky-800"
-                href={`groups/${groupData.groupId}`}
+                href={`/${examName}/groups/${groupData.groupId}`}
               >
                 {groupData.groupId}
               </a>
