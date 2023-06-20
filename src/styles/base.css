@@ -5,15 +5,15 @@
 
 @layer base {
     html {
-        font-family: 'Fira Mono', monospace;
+        font-family: 'Open Sans', sans-serif;
     }
 
     a {
-        @apply text-blue-800 hover:underline;
+        @apply text-blue-900 hover:underline;
     }
 
     p {
-        @apply text-gray-600;
+        @apply text-gray-900;
     }
 
 

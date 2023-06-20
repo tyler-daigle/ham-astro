@@ -32,15 +32,17 @@ groupList.forEach((groupId) => {
 <BaseLayout pageTitle={`Groups in subelement ${subelementName}`}>
     <MainLayout>
         <PageHeader>Groups in subelement {subelementName}:</PageHeader>
-        <ul>
+        <ul class="mt-4">
             {
                 groupList.map((groupId) => (
-                    <li class="border-2 p-4 my-4 ">
-                        <SectionHeader>Group {groupId}</SectionHeader>
-                        <p class="py-4">{groupDescriptions.get(groupId)}</p>
-                        <a href={`/${examName}/groups/${groupId}`}>
-                            View Questions In Group {groupId}
+                    <li class="my-2">
+                        <a
+                            class="hover:no-underline text-2xl"
+                            href={`/${examName}/groups/${groupId}`}
+                        >
+                            Group {groupId}
                         </a>
+                        <p class="pb-2">{groupDescriptions.get(groupId)}</p>
                     </li>
                 ))
             }

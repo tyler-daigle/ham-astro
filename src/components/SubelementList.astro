@@ -7,19 +7,17 @@ const { subelements, examType } = Astro.props;
     {
         subelements.map((subelement) => {
             return (
-                <li class="border-2 p-4 my-4">
-                    <SectionHeader>
-                        Subelement {subelement.subelementName}:{" "}
-                        <span class="capitalize">
-                            {subelement.description.toLowerCase()}
-                        </span>
-                    </SectionHeader>
-
+                <li class="my-4">
                     <a
-                        class="block pt-2"
+                        class="block pt-2 hover:no-underline"
                         href={`/${examType}/subelements/${subelement.subelementName}`}
                     >
-                        View Groups In Subelement
+                        <SectionHeader>
+                            Subelement {subelement.subelementName}:{" "}
+                            <span class="capitalize  hover:text-blue-500">
+                                {subelement.description.toLowerCase()}
+                            </span>
+                        </SectionHeader>
                     </a>
                 </li>
             );

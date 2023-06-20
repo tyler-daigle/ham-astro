@@ -6,7 +6,7 @@ const { questionList } = Astro.props;
 <ol>
     {
         questionList.map((q) => (
-            <li class="flex gap-4 p-4 mb-4 border">
+            <li class="flex gap-4 mb-4">
                 <span class="font-bold text-xl">{q.id}</span>
                 <QuestionItem
                     questionId={q.id}
