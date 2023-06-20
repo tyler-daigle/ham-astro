@@ -7,7 +7,14 @@
     html {
         font-family: 'Fira Mono', monospace;
     }
+
     a {
         @apply text-blue-800 hover:underline;
     }
+
+    p {
+        @apply text-gray-600;
+    }
+
+
 }

@@ -3,15 +3,24 @@ const { examName } = Astro.props;
 ---
 
 <div>
-    <ul>
+    <ul class="flex gap-4">
         <li>
-            <a href=`/${examName}/subelements`>Browse Subelements</a>
+            <a
+                class="bg-blue-400 text-white px-4 py-2 rounded-sm block hover:no-underline hover:bg-blue-500"
+                href=`/${examName}/subelements`>Browse Subelements</a
+            >
         </li>
         <li>
-            <a href=`/${examName}/groups`>Browse Groups</a>
+            <a
+                class="bg-blue-400 text-white px-4 py-2 rounded-sm block hover:no-underline hover:bg-blue-500"
+                href=`/${examName}/groups`>Browse Groups</a
+            >
         </li>
         <li>
-            <a href=`/${examName}/questions`>Browse All Questions</a>
+            <a
+                class="bg-blue-400 text-white px-4 py-2 rounded-sm block hover:no-underline hover:bg-blue-500"
+                href=`/${examName}/questions`>Browse All Questions</a
+            >
         </li>
     </ul>
 </div>

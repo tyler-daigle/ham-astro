@@ -1,1 +1,20 @@
-<h2 class="text-xl text-slate-700"><slot /></h2>
+---
+let { size } = Astro.props;
+
+if (!size) {
+    size = "normal";
+}
+let className = "";
+switch (size) {
+    case "normal":
+        className = "text-xl";
+        break;
+    case "large":
+        className = "text-3xl";
+        break;
+}
+
+className = `${className} text-slate-700`;
+---
+
+<h2 class={className}><slot /></h2>

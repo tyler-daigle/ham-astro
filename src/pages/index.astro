@@ -9,35 +9,106 @@ import SectionLinks from "@components/SectionLinks.astro";
 <BaseLayout pageTitle="This is the index">
 	<MainLayout>
 		<PageHeader>HAM Radio License Exam Question Pool Browser</PageHeader>
-		<p class="my-4">
-			Here you can browse through all the questions in the question pools
-			for each of the different license classes.
-		</p>
+		<div class="pl-4 border-l-blue-400 border-l-8">
+			<p class="my-4">
+				Here you can browse through all the questions in the question
+				pools for each of the three different license classes.
+			</p>
+			<p class="my-4">
+				Each exam has a pool of questions that are separated into <strong
+					>subelements</strong
+				>. Each subelement is then divided up into <strong
+					>groups</strong
+				>.
+			</p>
+
+			<SectionHeader>What Are Subelements?</SectionHeader>
+			<p class="my-4">
+				A subelement represents a major subject area within amateur
+				radio, such as regulations, operating procedures, technical
+				aspects, or radio wave propagation. Each subelement covers a
+				distinct set of knowledge and skills required for operating a
+				radio station effectively and safely. For example, the
+				regulations subelement may cover topics like licensing
+				requirements, frequency allocations, and station identification
+				procedures.
+			</p>
+
+			<SectionHeader>What Are Groups?</SectionHeader>
+			<p class="my-4">
+				Within each subelement, questions are further organized into
+				groups. These groups act as smaller subsets within the
+				subelement and often represent specific topics or subtopics
+				related to the broader subject area. For instance, within the
+				technical subelement, there might be groups focused on
+				electronics theory, antenna design, electrical safety, or radio
+				equipment troubleshooting.
+			</p>
+		</div>
+
 		<ul>
-			<li class="border-2 p-4 my-4">
-				<SectionHeader>Technician Exam</SectionHeader>
-				<p class="text-sm my-4">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-					Incidunt inventore molestiae optio consequatur non
-					blanditiis ab ut debitis cumque esse?
+			<li class="my-4">
+				<div class="border-b-2">
+					<SectionHeader size="large">Technician Exam</SectionHeader>
+				</div>
+				<p class="my-4">
+					The Technician Class license is the entry-level license in
+					amateur radio. It grants operators the basic privileges
+					necessary to communicate on amateur radio frequencies.
+					Holders of this license have demonstrated knowledge and
+					understanding of fundamental concepts such as radio
+					regulations, basic operating procedures, and safety
+					practices. Technicians have access to a wide range of VHF
+					and UHF frequencies, enabling local and regional
+					communication using handheld or mobile radios. This license
+					level serves as an excellent starting point for newcomers to
+					the amateur radio hobby, allowing them to gain practical
+					experience while exploring various aspects of radio
+					communication.
 				</p>
 				<SectionLinks examName="technician" />
 			</li>
-			<li class="border-2 p-4 my-4">
-				<SectionHeader>General Exam</SectionHeader>
-				<p class="text-sm my-4">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-					Incidunt inventore molestiae optio consequatur non
-					blanditiis ab ut debitis cumque esse?
+			<li class="my-4">
+				<div class="border-b-2">
+					<SectionHeader size="large">General Exam</SectionHeader>
+				</div>
+				<p class="my-4">
+					The General Class license represents an intermediate level
+					of proficiency in amateur radio. Operators who hold this
+					license have a deeper understanding of radio theory,
+					regulations, and operating practices. The General Class
+					license expands the privileges available to operators,
+					providing access to a broader range of frequencies,
+					including long-distance HF bands. With increased privileges,
+					General Class operators can engage in long-range
+					communication, utilize more powerful equipment, and explore
+					various modes of operation such as voice, digital, and Morse
+					code. This license level offers greater flexibility and
+					opportunities for experimentation, making it a significant
+					step forward for amateur radio enthusiasts seeking enhanced
+					capabilities.
 				</p>
 				<SectionLinks examName="general" />
 			</li>
-			<li class="border-2 p-4 my-4">
-				<SectionHeader>Amateur Extra Exam</SectionHeader>
-				<p class="text-sm my-4">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-					Incidunt inventore molestiae optio consequatur non
-					blanditiis ab ut debitis cumque esse?
+			<li class="my-4">
+				<div class="border-b-2">
+					<SectionHeader size="large">
+						Amateur Extra Exam
+					</SectionHeader>
+				</div>
+				<p class="my-4">
+					The Extra Class license is the highest level of amateur
+					radio licensing. Holders of this license possess a
+					comprehensive knowledge of radio regulations, advanced
+					operating techniques, and in-depth understanding of
+					electronics theory. Extra Class operators have access to all
+					amateur radio frequencies, including exclusive segments,
+					enabling them to communicate globally and utilize high-power
+					transmitters. This license level reflects a commitment to
+					excellence and signifies expertise in the field of amateur
+					radio. Extra Class operators often engage in activities such
+					as contesting, experimentation, and technical innovations,
+					contributing to the advancement of the hobby as a whole.
 				</p>
 				<SectionLinks examName="extra" />
 			</li>

@@ -9,13 +9,14 @@ const { subelements, examType } = Astro.props;
             return (
                 <li class="border-2 p-4 my-4">
                     <SectionHeader>
-                        Subelement {subelement.subelementName}
+                        Subelement {subelement.subelementName}:{" "}
+                        <span class="capitalize">
+                            {subelement.description.toLowerCase()}
+                        </span>
                     </SectionHeader>
-                    <p class="py-4 capitalize text-lg">
-                        {subelement.description.toLowerCase()}
-                    </p>
 
                     <a
+                        class="block pt-2"
                         href={`/${examType}/subelements/${subelement.subelementName}`}
                     >
                         View Groups In Subelement
