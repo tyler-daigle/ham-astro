@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+
+import jsonData from "@data/general-subelements.json";
+import groupData from "@data/general-groups.json";
+
+export function getStaticPaths() {
+    return jsonData.map((data) => ({
+        params: { subelementName: data.subelementId },
+    }));
+}
+
+const { subelementName } = Astro.params;
+const examName = "general";
+
+// get the list of groups
+const groupList =
+    jsonData.find((data) => data.subelementId === subelementName)?.groups || [];
+
+const groupDescriptions = new Map();
+groupList.forEach((groupId) => {
+    const desc = groupData.find(
+        (group) => group.groupId === groupId
+    ).description;
+    groupDescriptions.set(groupId, desc);
+});
+---
+
+<BaseLayout pageTitle={`Groups in subelement ${subelementName}`}>
+    <MainLayout>
+        <PageHeader>Groups in subelement {subelementName}:</PageHeader>
+        <ul>
+            {
+                groupList.map((groupId) => (
+                    <li class="border-2 p-4 my-4 ">
+                        <SectionHeader>Group {groupId}</SectionHeader>
+                        <p class="py-4">{groupDescriptions.get(groupId)}</p>
+                        <a href={`/${examName}/groups/${groupId}`}>
+                            View Questions In Group {groupId}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </MainLayout>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+
+import questionData from "@data/general-questions.json";
+const examType = "general";
+---
+
+<BaseLayout>
+    <MainLayout pageTitle={`All Questions For The ${examType} exam`}>
+        <PageHeader>{examType} Questions</PageHeader>
+        <p class="py-4">
+            There are {questionData.length} questions in the {examType} question
+            pool.
+        </p>
+        <ul>
+            {
+                questionData.map((question) => {
+                    return (
+                        <li class="border p-4 my-4">
+                            <a href={`/${examType}/questions/${question.id}`}>
+                                {question.id}
+                            </a>
+                            <p class="py-4">{question.text}</p>
+                        </li>
+                    );
+                })
+            }
+        </ul>
+    </MainLayout>
+</BaseLayout>

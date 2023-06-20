@@ -1,0 +1,46 @@
+---
+import groupJson from "@data/general-groups.json";
+import questionJson from "@data/general-questions.json";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import QuestionList from "@components/QuestionList.astro";
+
+export function getStaticPaths() {
+	const paths = groupJson.map((groupData) => ({
+		params: { groupName: groupData.groupId },
+	}));
+	return paths;
+}
+
+const { groupName } = Astro.params;
+const desc =
+	groupJson.find((data) => data.groupId === groupName)?.description ||
+	"No description";
+
+const questions = questionJson.filter(
+	(question) => question.group === groupName
+);
+---
+
+<BaseLayout pageTitle={`Group ${groupName}`}>
+	<MainLayout>
+		<PageHeader>Questions in Group {groupName}</PageHeader>
+		<p class="py-4">
+			{desc}
+		</p>
+
+		<SectionHeader>
+			{questions.length} Questions in Group {groupName}:
+		</SectionHeader>
+
+		<p class="py-4 font-semibold">
+			The correct answers are highlighted in <span class="text-blue-500"
+				>blue</span
+			>.
+		</p>
+
+		<QuestionList questionList={questions} />
+	</MainLayout>
+</BaseLayout>

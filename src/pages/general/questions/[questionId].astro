@@ -1,0 +1,43 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import QuestionItem from "@components/QuestionItem.astro";
+
+import questionData from "@data/general-questions.json";
+
+export function getStaticPaths() {
+    return questionData.map((question) => ({
+        params: { questionId: question.id },
+    }));
+}
+
+const { questionId } = Astro.params;
+const question = questionData.find((data) => data.id === questionId);
+const examName = "general";
+---
+
+<BaseLayout pageTitle={`Question ${questionId}`}>
+    <MainLayout>
+        <PageHeader>{`Question ${questionId}`}</PageHeader>
+        <p class="py-4 font-semibold">
+            The correct answer is highlighted in <span class="text-blue-500"
+                >blue</span
+            >.
+        </p>
+
+        <div class="border p-4">
+            <QuestionItem
+                questionId={question.id}
+                questionText={question.text}
+                questionChoices={question.choices}
+                correctAnswer={question.answer}
+            />
+        </div>
+
+        <a class="py-4 block" href={`/${examName}/questions`}
+            >Back To Question List</a
+        >
+    </MainLayout>
+</BaseLayout>
