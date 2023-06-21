@@ -9,25 +9,24 @@ const examType = "technician";
 ---
 
 <BaseLayout>
-    <MainLayout pageTitle={`All Questions For The ${examType} exam`}>
-        <PageHeader>{examType} Questions</PageHeader>
-        <p class="py-4">
-            There are {questionData.length} questions in the {examType} question
-            pool.
-        </p>
-        <ul>
-            {
-                questionData.map((question) => {
-                    return (
-                        <li class="my-4 flex gap-4">
-                            <a href={`/${examType}/questions/${question.id}`}>
-                                {question.id}
-                            </a>
-                            <p class="pb-2">{question.text}</p>
-                        </li>
-                    );
-                })
-            }
-        </ul>
-    </MainLayout>
+  <MainLayout pageTitle={`All Questions For The ${examType} exam`}>
+    <PageHeader>{examType} Questions</PageHeader>
+    <p class="py-4">
+      There are {questionData.length} questions in the {examType} question pool.
+    </p>
+    <ul>
+      {
+        questionData.map((question) => {
+          return (
+            <li class="my-4 flex gap-4">
+              <a href={`/${examType}/questions/${question.id}`}>
+                {question.id}
+              </a>
+              <p class="pb-2">{question.text}</p>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </MainLayout>
 </BaseLayout>
