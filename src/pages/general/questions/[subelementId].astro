@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import QuestionList from "@components/QuestionList.astro";
+
+import questionData from "@data/general-questions.json";
+import subelementData from "@data/general-subelements.json";
+
+const { subelementId } = Astro.params;
+
+export function getStaticPaths() {
+  return subelementData.map((subelement) => ({
+    params: { subelementId: subelement.subelementId },
+  }));
+}
+
+const questionList = questionData.filter(
+  (question) => question.subelement === subelementId
+);
+
+// get all the questions that are in this subelement
+const examName = "general";
+---
+
+<BaseLayout pageTitle={`Question ${subelementId} - ${examName} exam`}>
+  <MainLayout>
+    <PageHeader>
+      {questionList.length} questions in subelement {subelementId}
+    </PageHeader>
+    <p class="py-4 font-semibold">
+      The correct answer is highlighted in <span class="text-blue-500"
+        >blue</span
+      >.
+    </p>
+
+    <QuestionList questionList={questionList} />
+  </MainLayout>
+</BaseLayout>

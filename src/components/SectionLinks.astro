@@ -1,26 +1,18 @@
 ---
+import Button from "@components/Button.astro";
 const { examName } = Astro.props;
 ---
 
 <div>
-    <ul class="flex gap-4">
-        <li>
-            <a
-                class="text-white px-4 py-2 rounded-sm block hover:no-underline hover:text-white hover:bg-indigo-600 bg-indigo-500"
-                href=`/${examName}/subelements`>Browse Subelements</a
-            >
-        </li>
-        <li>
-            <a
-                class="text-white px-4 py-2 rounded-sm block hover:no-underline hover:text-white hover:bg-indigo-600 bg-indigo-500"
-                href=`/${examName}/groups`>Browse Groups</a
-            >
-        </li>
-        <li>
-            <a
-                class="text-white px-4 py-2 rounded-sm block hover:no-underline hover:text-white hover:bg-indigo-600 bg-indigo-500"
-                href=`/${examName}/questions`>Browse All Questions</a
-            >
-        </li>
-    </ul>
+  <ul class="flex gap-4">
+    <li>
+      <Button href={`/${examName}/subelements`}>Browse Subelements</Button>
+    </li>
+    <li>
+      <Button href={`/${examName}/groups`}>Browse Groups</Button>
+    </li>
+    <li>
+      <Button href={`/${examName}/questions`}>Browse All Questions</Button>
+    </li>
+  </ul>
 </div>

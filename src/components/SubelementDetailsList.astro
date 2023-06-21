@@ -1,0 +1,29 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+const { groupData, groupList, examName } = Astro.props;
+
+const groupDetails = new Map();
+groupList.forEach((groupId) => {
+  const data = groupData.find((group) => group.groupId === groupId);
+  groupDetails.set(groupId, data);
+});
+---
+
+<p class="py-2 font-bold">
+  Click the group's id to view all the questions in that group.
+</p>
+
+<dl>
+  {
+    groupList.map((groupId) => (
+      <div class="py-2">
+        <dt>
+          <a class="" href={`/${examName}/groups/${groupId}`}>
+            Group {groupId}
+          </a>
+        </dt>
+        <dd>{groupDetails.get(groupId).description}</dd>
+      </div>
+    ))
+  }
+</dl>

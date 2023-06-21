@@ -1,26 +1,36 @@
 ---
+import Button from "./Button.astro";
 import SectionHeader from "./SectionHeader.astro";
 const { subelements, examType } = Astro.props;
 ---
 
 <ul>
-    {
-        subelements.map((subelement) => {
-            return (
-                <li class="my-4">
-                    <a
-                        class="block pt-2 hover:no-underline"
-                        href={`/${examType}/subelements/${subelement.subelementName}`}
-                    >
-                        <SectionHeader>
-                            Subelement {subelement.subelementName}:{" "}
-                            <span class="capitalize  hover:text-blue-500">
-                                {subelement.description.toLowerCase()}
-                            </span>
-                        </SectionHeader>
-                    </a>
-                </li>
-            );
-        })
-    }
+  {
+    subelements.map((subelement) => {
+      return (
+        <li class="my-4">
+          <SectionHeader>
+            {subelement.subelementName}:{" "}
+            <span class="capitalize">
+              {subelement.description.toLowerCase()}
+            </span>
+          </SectionHeader>
+
+          <div class="flex gap-4 my-2 ">
+            <Button
+              href={`/${examType}/subelements/${subelement.subelementName}`}
+            >
+              View Groups
+            </Button>
+
+            <Button
+              href={`/${examType}/questions/${subelement.subelementName}`}
+            >
+              View Questions
+            </Button>
+          </div>
+        </li>
+      );
+    })
+  }
 </ul>

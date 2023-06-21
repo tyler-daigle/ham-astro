@@ -2,10 +2,10 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import PageHeader from "@components/PageHeader.astro";
-import SectionHeader from "@components/SectionHeader.astro";
 
 import jsonData from "@data/tech-subelements.json";
 import groupData from "@data/tech-groups.json";
+import SubelementDetailsList from "@components/SubelementDetailsList.astro";
 
 export function getStaticPaths() {
     return jsonData.map((data) => ({
@@ -32,20 +32,10 @@ groupList.forEach((groupId) => {
 <BaseLayout pageTitle={`Groups in subelement ${subelementName}`}>
     <MainLayout>
         <PageHeader>Groups in subelement {subelementName}:</PageHeader>
-        <ul class="mt-4">
-            {
-                groupList.map((groupId) => (
-                    <li class="my-2">
-                        <a
-                            class="hover:no-underline text-2xl"
-                            href={`/${examName}/groups/${groupId}`}
-                        >
-                            Group {groupId}
-                        </a>
-                        <p class="pb-2">{groupDescriptions.get(groupId)}</p>
-                    </li>
-                ))
-            }
-        </ul>
+        <SubelementDetailsList
+            examName={examName}
+            groupData={groupData}
+            groupList={groupList}
+        />
     </MainLayout>
 </BaseLayout>

@@ -2,10 +2,13 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import PageHeader from "@components/PageHeader.astro";
-import SectionHeader from "@components/SectionHeader.astro";
+
+import SubelementDetailsList from "@components/SubelementDetailsList.astro";
 
 import jsonData from "@data/general-subelements.json";
 import groupData from "@data/general-groups.json";
+
+const { subelementName } = Astro.params;
 
 export function getStaticPaths() {
     return jsonData.map((data) => ({
@@ -13,39 +16,23 @@ export function getStaticPaths() {
     }));
 }
 
-const { subelementName } = Astro.params;
-const examName = "general";
-
 // get the list of groups
 const groupList =
     jsonData.find((data) => data.subelementId === subelementName)?.groups || [];
 
-const groupDescriptions = new Map();
-groupList.forEach((groupId) => {
-    const desc = groupData.find(
-        (group) => group.groupId === groupId
-    ).description;
-    groupDescriptions.set(groupId, desc);
-});
+const examName = "general";
+
+// for each exam change the imported json data to the correct data
+// change the examName to the correct exam name
 ---
 
 <BaseLayout pageTitle={`Groups in subelement ${subelementName}`}>
     <MainLayout>
         <PageHeader>Groups in subelement {subelementName}:</PageHeader>
-        <ul class="mt-4">
-            {
-                groupList.map((groupId) => (
-                    <li class="my-2">
-                        <a
-                            class="hover:no-underline text-2xl"
-                            href={`/${examName}/groups/${groupId}`}
-                        >
-                            Group {groupId}
-                        </a>
-                        <p class="pb-2">{groupDescriptions.get(groupId)}</p>
-                    </li>
-                ))
-            }
-        </ul>
+        <SubelementDetailsList
+            examName={examName}
+            groupData={groupData}
+            groupList={groupList}
+        />
     </MainLayout>
 </BaseLayout>
