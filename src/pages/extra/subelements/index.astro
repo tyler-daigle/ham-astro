@@ -6,42 +6,37 @@ import SubelementList from "@components/SubelementList.astro";
 import subelementJson from "@data/extra-subelements.json";
 
 const subelements = subelementJson.map((data) => ({
-    subelementName: data.subelementId,
-    description: data.name,
+  subelementName: data.subelementId,
+  description: data.name,
 }));
 
 const examName = "extra";
 ---
 
 <BaseLayout pageTitle={`${examName} subelements`}>
-    <MainLayout>
-        <PageHeader>
-            <span class="capitalize">{examName}</span> Subelements
-        </PageHeader>
-        <p class="py-4">
-            The General exam subelements cover a broad range of topics that
-            build upon the foundational knowledge acquired in the Technician
-            Class license. This exam assesses a candidate's understanding of
-            advanced concepts in amateur radio, regulations, operating
-            procedures, and technical aspects. The subelements typically include
-            questions on frequency allocations, operating practices and
-            etiquette, antenna systems, propagation characteristics,
-            electromagnetic wave behavior, modulation techniques, digital modes,
-            radio wave characteristics, electrical principles, electronic
-            components, and safety practices. In addition, candidates are
-            expected to demonstrate knowledge of advanced operating techniques,
-            such as contesting, operating in public service events, and
-            utilizing various modes of communication. The General exam
-            subelements delve deeper into the technical aspects of amateur
-            radio, equipping operators with a more comprehensive understanding
-            of the hobby and expanding their privileges to operate on
-            long-distance HF bands, opening up exciting opportunities for global
-            communication and exploration of diverse operating modes.
-        </p>
+  <MainLayout>
+    <PageHeader>
+      <span class="capitalize">{examName}</span> Subelements
+    </PageHeader>
+    <p class="py-4">
+      The Amateur Extra exam subelements cover advanced and in-depth knowledge
+      of amateur radio, making it the highest level of licensing in the hobby.
+      This exam assesses candidates' expertise in regulations, operating
+      procedures, electronics theory, advanced antenna design and construction,
+      propagation characteristics, RF power amplifiers, radio wave behavior,
+      modulation techniques, digital signal processing, advanced circuitry,
+      electromagnetic compatibility, safety practices, and more. The subelements
+      explore complex topics such as advanced radio wave propagation models,
+      microwave theory, advanced modulation schemes, high-frequency circuit
+      design, and advanced operating techniques. By successfully completing the
+      Amateur Extra exam, operators demonstrate a comprehensive understanding of
+      the technical and regulatory aspects of amateur radio, allowing them to
+      utilize the entire spectrum of amateur radio frequencies and engage in
+      advanced experimentation, cutting-edge technology applications, and
+      contributing to the advancement of the hobby as a whole.
+    </p>
 
-        <p>
-            Select a subelement below to browse the groups contained within it.
-        </p>
-        <SubelementList examType={examName} subelements={subelements} />
-    </MainLayout>
+    <p>Select a subelement below to browse the groups contained within it.</p>
+    <SubelementList examType={examName} subelements={subelements} />
+  </MainLayout>
 </BaseLayout>
