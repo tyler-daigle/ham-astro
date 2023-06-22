@@ -1,4 +1,5 @@
 ---
+import Button from "./Button.astro";
 import SectionHeader from "./SectionHeader.astro";
 const { groupData, groupList, examName } = Astro.props;
 
@@ -9,20 +10,17 @@ groupList.forEach((groupId) => {
 });
 ---
 
-<p class="py-2 font-bold">
-  Click the group's id to view all the questions in that group.
-</p>
-
 <dl>
   {
     groupList.map((groupId) => (
-      <div class="py-2">
-        <dt>
-          <a class="" href={`/${examName}/groups/${groupId}`}>
-            Group {groupId}
-          </a>
+      <div class=" bg-indigo-100 bg-opacity-50 p-4 my-4">
+        <dt class="pb-2">
+          <SectionHeader>Group {groupId}</SectionHeader>
         </dt>
         <dd>{groupDetails.get(groupId).description}</dd>
+        <p class="py-2">{groupData.description}</p>
+
+        <Button href={`/${examName}/groups/${groupId}`}>View Questions</Button>
       </div>
     ))
   }

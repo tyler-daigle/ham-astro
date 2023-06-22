@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+
+import SubelementDetailsList from "@components/SubelementDetailsList.astro";
+
+import jsonData from "@data/extra-subelements.json";
+import groupData from "@data/extra-groups.json";
+
+const { subelementName } = Astro.params;
+
+export function getStaticPaths() {
+    return jsonData.map((data) => ({
+        params: { subelementName: data.subelementId },
+    }));
+}
+
+// get the list of groups
+const groupList =
+    jsonData.find((data) => data.subelementId === subelementName)?.groups || [];
+
+const examName = "extra";
+
+// for each exam change the imported json data to the correct data
+// change the examName to the correct exam name
+---
+
+<BaseLayout pageTitle={`Groups in subelement ${subelementName}`}>
+    <MainLayout>
+        <PageHeader>Groups in subelement {subelementName}:</PageHeader>
+        <SubelementDetailsList
+            examName={examName}
+            groupData={groupData}
+            groupList={groupList}
+        />
+    </MainLayout>
+</BaseLayout>

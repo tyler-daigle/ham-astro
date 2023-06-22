@@ -1,0 +1,47 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SubelementList from "@components/SubelementList.astro";
+import subelementJson from "@data/extra-subelements.json";
+
+const subelements = subelementJson.map((data) => ({
+    subelementName: data.subelementId,
+    description: data.name,
+}));
+
+const examName = "extra";
+---
+
+<BaseLayout pageTitle={`${examName} subelements`}>
+    <MainLayout>
+        <PageHeader>
+            <span class="capitalize">{examName}</span> Subelements
+        </PageHeader>
+        <p class="py-4">
+            The General exam subelements cover a broad range of topics that
+            build upon the foundational knowledge acquired in the Technician
+            Class license. This exam assesses a candidate's understanding of
+            advanced concepts in amateur radio, regulations, operating
+            procedures, and technical aspects. The subelements typically include
+            questions on frequency allocations, operating practices and
+            etiquette, antenna systems, propagation characteristics,
+            electromagnetic wave behavior, modulation techniques, digital modes,
+            radio wave characteristics, electrical principles, electronic
+            components, and safety practices. In addition, candidates are
+            expected to demonstrate knowledge of advanced operating techniques,
+            such as contesting, operating in public service events, and
+            utilizing various modes of communication. The General exam
+            subelements delve deeper into the technical aspects of amateur
+            radio, equipping operators with a more comprehensive understanding
+            of the hobby and expanding their privileges to operate on
+            long-distance HF bands, opening up exciting opportunities for global
+            communication and exploration of diverse operating modes.
+        </p>
+
+        <p>
+            Select a subelement below to browse the groups contained within it.
+        </p>
+        <SubelementList examType={examName} subelements={subelements} />
+    </MainLayout>
+</BaseLayout>
