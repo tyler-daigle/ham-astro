@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+const numExams = 6;
+const examNames = ["technician", "general", "extra"];
+
+function createExamLinks(examName) {}
+---
+
+<BaseLayout>
+  <MainLayout>
+    <PageHeader>Practice Exams</PageHeader>
+    <p class="py-2">
+      Below are links to practice exams for each license class. The exams draw
+      questions from the question pools that are provided on the ARRL website.
+    </p>
+    <p class="font-bold py-2">
+      Just a general disclaimer: There is no guarantee that the exams here will
+      be exactly what you see on the actual exam that you might take for your
+      license. They are just provided for helping you practice and might not be
+      100% up to date as questions are edited and removed from the question
+      pools sometimes.
+    </p>
+
+    <ul>
+      {
+        examNames.map((examName) => {
+          return (
+            <li>
+              <SectionHeader>
+                <span class="capitalize">{examName}</span>
+              </SectionHeader>
+              <ol>{createExamLinks(examName)}</ol>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </MainLayout>
+</BaseLayout>

@@ -1,6 +1,11 @@
 ---
-const { questionId, questionText, questionChoices, correctAnswer } =
-    Astro.props;
+const {
+    questionId,
+    questionText,
+    questionChoices,
+    correctAnswer,
+    highlightAnswer = true,
+} = Astro.props;
 ---
 
 <section>
@@ -11,7 +16,7 @@ const { questionId, questionText, questionChoices, correctAnswer } =
                 questionChoices.map((choice, index) => (
                     <li
                         class={
-                            correctAnswer === index
+                            correctAnswer === index && highlightAnswer
                                 ? "text-blue-500 font-bold"
                                 : ""
                         }

@@ -1,6 +1,6 @@
 ---
 import QuestionItem from "@components/QuestionItem.astro";
-const { questionList } = Astro.props;
+const { questionList, highlightAnswer = true } = Astro.props;
 ---
 
 <ol>
@@ -13,6 +13,7 @@ const { questionList } = Astro.props;
           questionText={q.text}
           questionChoices={q.choices}
           correctAnswer={q.answer}
+          highlightAnswer={highlightAnswer}
         />
       </li>
     ))
