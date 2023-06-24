@@ -8,9 +8,9 @@ const { subelements, examType } = Astro.props;
   {
     subelements.map((subelement) => {
       return (
-        <li class="my-4">
+        <li class="bg-indigo-100 bg-opacity-50 p-4 my-4">
           <SectionHeader>
-            {subelement.subelementName}:{" "}
+            Subelement {subelement.subelementName}:{" "}
             <span class="capitalize">
               {subelement.description.toLowerCase()}
             </span>
