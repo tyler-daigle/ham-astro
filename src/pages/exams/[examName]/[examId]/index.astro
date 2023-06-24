@@ -45,7 +45,9 @@ const questionList = await loadData(examName, examId);
 
 <BaseLayout>
   <MainLayout>
-    <PageHeader>{examName} Exam Practice Test #{examId}</PageHeader>
+    <PageHeader>
+      {examName} Exam Practice Test #{parseInt(examId) + 1}
+    </PageHeader>
 
     <div class="py-2">
       <Button href={`/exams/${examName}/${examId}/answers`}>

@@ -5,6 +5,7 @@ module.exports = {
 		extend: {},
 		listStyleType: {
 			letters: 'upper-alpha',
+			numbers: 'decimal'
 		}
 	},
 	plugins: [],

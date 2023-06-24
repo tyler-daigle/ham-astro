@@ -6,7 +6,13 @@ import SectionHeader from "@components/SectionHeader.astro";
 const numExams = 6;
 const examNames = ["technician", "general", "extra"];
 
-function createExamLinks(examName) {}
+function createExamLinks(examName) {
+  const links = [];
+  for (let i = 0; i < numExams; i++) {
+    links.push(`/exams/${examName}/${i}`);
+  }
+  return links;
+}
 ---
 
 <BaseLayout>
@@ -28,11 +34,17 @@ function createExamLinks(examName) {}
       {
         examNames.map((examName) => {
           return (
-            <li>
+            <li class="my-4">
               <SectionHeader>
-                <span class="capitalize">{examName}</span>
+                <span class="capitalize underline">{examName}</span>
               </SectionHeader>
-              <ol>{createExamLinks(examName)}</ol>
+              <ol>
+                {createExamLinks(examName).map((link, index) => (
+                  <li class="ml-4">
+                    <a href={link}>Practice Exam {index + 1}</a>
+                  </li>
+                ))}
+              </ol>
             </li>
           );
         })
