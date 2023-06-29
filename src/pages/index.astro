@@ -9,7 +9,7 @@ import SectionLinks from "@components/SectionLinks.astro";
 <BaseLayout pageTitle="This is the index">
 	<MainLayout>
 		<PageHeader>HAM Radio License Exam Question Pool Browser</PageHeader>
-		<div class="bg-indigo-100 p-4 my-4">
+		<div class="bg-indigo-200 p-4 my-4 border border-indigo-300 rounded-md">
 			<p class="my-4">
 				Here you can browse through all the questions in the question pools for
 				each of the three different license classes.
@@ -43,9 +43,10 @@ import SectionLinks from "@components/SectionLinks.astro";
 		</div>
 
 		<ul>
+			<SectionHeader>Choose A License Class Below:</SectionHeader>
 			<li class="my-4">
-				<details class="border p-4 border-indigo-900">
-					<summary class="font-bold"> Technician Exam</summary>
+				<details>
+					<summary class="font-bold text-sky-800"> Technician Exam</summary>
 					<p class="my-4">
 						The Technician Class license is the entry-level license in amateur
 						radio. It grants operators the basic privileges necessary to
@@ -64,8 +65,8 @@ import SectionLinks from "@components/SectionLinks.astro";
 			</li>
 
 			<li class="my-4">
-				<details class="border p-4 border-indigo-900">
-					<summary class="font-bold">General Exam</summary>
+				<details>
+					<summary class="font-bold text-sky-800">General Exam</summary>
 					<p class="my-4">
 						The General Class license represents an intermediate level of
 						proficiency in amateur radio. Operators who hold this license have a
@@ -84,8 +85,8 @@ import SectionLinks from "@components/SectionLinks.astro";
 				</details>
 			</li>
 			<li class="my-4">
-				<details class="border p-4 border-indigo-900">
-					<summary class="font-bold">Amateur Extra Exam</summary>
+				<details>
+					<summary class="text-sky-800 font-bold">Amateur Extra Exam</summary>
 
 					<p class="my-4">
 						The Extra Class license is the highest level of amateur radio

@@ -44,7 +44,9 @@ const questionList = await loadData(examName, examId);
 
 <BaseLayout>
   <MainLayout>
-    <PageHeader>{examName} Exam Practice Test #{examId} Answers</PageHeader>
+    <PageHeader>
+      {examName} Exam Practice Test #{parseInt(examId) + 1} Answers
+    </PageHeader>
     <div class="py-4">
       <QuestionList questionList={questionList} highlightAnswer={true} />
     </div>

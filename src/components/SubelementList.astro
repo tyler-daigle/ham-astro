@@ -8,7 +8,7 @@ const { subelements, examType } = Astro.props;
   {
     subelements.map((subelement) => {
       return (
-        <li class="bg-indigo-100 bg-opacity-50 p-4 my-4">
+        <li class=" border-t py-4">
           <SectionHeader>
             Subelement {subelement.subelementName}:{" "}
             <span class="capitalize">
@@ -16,7 +16,7 @@ const { subelements, examType } = Astro.props;
             </span>
           </SectionHeader>
 
-          <div class="flex gap-4 my-2 ">
+          <div class="flex gap-4 my-4">
             <Button
               href={`/${examType}/subelements/${subelement.subelementName}`}
             >
